@@ -18,24 +18,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.omnibus.chef_version = :latest
     config.vm.provision :chef_solo do |chef|
-        chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
+        chef.cookbooks_path = ['chef-repo/cookbooks', 'chef-repo/site-cookbooks']
         chef.run_list = %w(
             recipe[apt]
+            recipe[build-essential]
             recipe[debian]
-            recipe[zsh]
             recipe[vim]
             recipe[tmux]
+            recipe[zsh]
             recipe[docker]
             recipe[custom]
         )
 
         chef.json = {
             debian: {
-                mirror: 'http://ftp.jp.debian.org/debian',
+                mirror: 'http://cdn.debian.net/debian',
             },
-#            zsh: {
-#                install_method: 'source',
-#            },
+            zsh: {
+                install_method: 'source',
+            },
             vim: {
                 install_method: 'source',
             },
