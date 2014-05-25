@@ -2,7 +2,7 @@
 # Cookbook Name:: zsh
 # Recipe:: default
 #
-# Copyright 2014, Shuichi Kura
+# Author:: Shuichi Kura <shuichi.kura@gmail.com>
 #
 
 begin

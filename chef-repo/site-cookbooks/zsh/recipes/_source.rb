@@ -36,3 +36,20 @@ bash 'install_zsh' do
   EOH
   action :nothing
 end
+
+tar_name = "zsh-completions"
+remote_file "#{Chef::Config['file_cache_path']}/#{tar_name}.tar.gz" do
+  source   "https://github.com/zsh-users/zsh-completions/archive/master.tar.gz"
+  notifies :run, 'bash[install_zsh_completions]', :immediately
+end
+
+bash 'install_zsh_completions' do
+  user 'root'
+  cwd  Chef::Config['file_cache_path']
+  code <<-EOH
+    tar -zxf #{tar_name}.tar.gz
+    cd #{tar_name}-master
+    cp -rp src /usr/local/share/zsh-completions
+  EOH
+  action :nothing
+end

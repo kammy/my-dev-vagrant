@@ -1,8 +1,7 @@
 #
 # Cookbook Name:: zsh
 # Recipe:: package
-#
-# Copyright 2014, Shuichi Kura
+# Author:: Shuichi Kura <shuichi.kura@gmail.com>
 #
 
 package 'zsh'
